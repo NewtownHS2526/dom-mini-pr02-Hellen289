@@ -15,37 +15,34 @@ const apolloRocket = document.querySelector("#apollo-rocket");
 const nebulaRocket = document.querySelector("#nebula-rocket");
 const cometRocket  = document.querySelector("#comet-rocket");
 
-const winnerBox = document.querySelector("#winner");
+const winnerText = document.querySelector("#winner");
 
 // Click Handlers
 const boostApollo = (e) => {
-  console.log("clicked");
   apollo_spot += 1;
-  changePosition(apolloRocket, apollo_spot);
+  moveTo(apolloRocket, apollo_spot);
   checkWinner(apollo_spot, "Apollo");
-  apolloRocket.alt = `Apollo is at spot ${apolloRocket} out of 6`;
+  apolloRocket.alt = `Apollo is at spot ${apollo_spot} out of 6`;
 };
 
 const boostNebula = (e) => {
-    console.log("clicked");
     nebula_spot += 1;
-    changePosition(nebulaRocket, nebula_spot);
+    moveTo(nebulaRocket, nebula_spot);
     checkWinner(nebula_spot, "Nebula");
     nebulaRocket.alt = `Nebula is at spot ${nebula_spot} out of 6`;
 };
 
 const boostComet = (e) => {
-    console.log("clicked");
     comet_spot += 1;
-    changePosition(cometRocket, comet_spot);
+    moveTo(cometRocket, comet_spot);
     checkWinner(comet_spot, "Comet");
     cometRocket.alt = `Comet is at spot ${comet_spot} out of 6`;
 };
 
 // Winner Check
-const checkWinner = (position, rocket) => {
-    if(position === 6) {
-        winnerText.innerHTML = rocket + " is the Winner";
+const checkWinner = (spot, name) => {
+    if(spot === 6) {
+        winnerText.innerHTML =  name + " is the Winner!";
     }
 };
 
